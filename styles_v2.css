@@ -1042,55 +1042,145 @@ footer {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 3.5rem 2rem 2.5rem 2rem;
+    }
+    
+    .hero-main-logo {
+        max-width: 380px;
+    }
+    
+    .hero-content h1 {
+        font-size: clamp(3.5rem, 8vw, 5rem);
+    }
+    
+    .hero-content h2 {
+        font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem;
+    }
+    
+    .section-title {
+        font-size: clamp(2.2rem, 5.5vw, 2.8rem);
+    }
+    
+    .gothic-title {
+        font-size: clamp(3.5rem, 8.5vw, 5.5rem) !important;
+    }
+}
+
 @media (max-width: 768px) {
     header {
         padding: 1rem;
+        height: 110px;
     }
     
     .main-nav a {
-        margin-top: -12px;
+        margin-top: -10px;
+        padding: 0.4rem;
+    }
+    
+    .cart-icon {
+        font-size: 1.7rem;
     }
     
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 3rem 1rem 2rem 1rem;
-        margin-top: 100px;
-        min-height: 70vh;
+        padding: 2.5rem 1rem 1.5rem 1rem;
+        margin-top: 95px;
+        min-height: 65vh;
+    }
+    
+    .hero-main-logo {
+        max-width: 320px;
+        margin-bottom: 1.75rem;
     }
     
     .hero-image img {
-        max-width: 70%;
-        max-height: 300px;
+        max-width: 65%;
+        max-height: 280px;
+    }
+    
+    .hero-image::after {
+        width: 115%;
+        height: 115%;
     }
     
     .hero-content {
-        margin-bottom: 2rem;
+        margin-bottom: 1.75rem;
+    }
+    
+    .hero-content h1 {
+        font-size: clamp(2.5rem, 7vw, 3.5rem);
+        margin-bottom: 0.75rem;
+    }
+    
+    .hero-content h2 {
+        font-size: clamp(1rem, 2.8vw, 1.4rem);
+        margin-bottom: 1.25rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.05rem;
+        padding: 0 1rem;
     }
     
     .products-section {
         padding: 2rem 1rem;
+        margin-top: 0.75rem;
     }
     
     .product-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 2rem;
         padding: 1rem;
     }
     
+    .product {
+        padding: 1.5rem;
+    }
+    
+    .product-image {
+        max-width: 350px;
+    }
+    
+    .product-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .product-info .price {
+        font-size: 1.2rem;
+    }
+    
+    .product-info .type {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        margin-bottom: 2.5rem;
+    }
+    
     .gothic-title {
         margin-bottom: 1.5rem !important;
-        font-size: clamp(3rem, 8vw, 5rem) !important;
+        font-size: clamp(2.8rem, 7.5vw, 4.5rem) !important;
+        letter-spacing: 1.5px !important;
     }
     
     .modal-content {
-        margin: 10% auto;
-        padding: 1.5rem;
-        width: 95%;
+        margin: 8% auto;
+        padding: 1.75rem;
+        width: 92%;
     }
     
     .modal-body {
         flex-direction: column;
+        gap: 1.5rem;
     }
     
     .modal-details {
@@ -1098,13 +1188,28 @@ footer {
         padding-top: 1rem;
     }
     
+    .modal-details h2 {
+        font-size: 1.8rem;
+    }
+    
     .form-row {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    #checkout-form input {
+        padding: 0.65rem;
+        font-size: 0.95rem;
+    }
+    
+    .btn-primary {
+        padding: 0.9rem 1.75rem;
+        font-size: 0.95rem;
     }
     
     .footer-content {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
         text-align: center;
     }
     
@@ -1113,56 +1218,192 @@ footer {
     }
     
     .footer-logo img {
-        height: 60px;
+        height: 55px;
+    }
+    
+    .footer-info p {
+        font-size: 0.95rem;
     }
     
     .logo-container .logo {
-        height: 70px;
+        height: 65px;
     }
 }
 
 @media (max-width: 480px) {
+    header {
+        height: 100px;
+        padding: 0.75rem;
+    }
+    
     .main-nav a {
-        margin-top: -15px;
+        margin-top: -12px;
+        padding: 0.25rem;
+    }
+    
+    .cart-icon {
+        font-size: 1.6rem;
+    }
+    
+    #cart-count {
+        font-size: 0.6rem;
+        min-width: 1rem;
+        height: 1rem;
+        top: -6px;
+        right: -6px;
     }
     
     .hero {
-        padding: 2rem 1rem 2rem 1rem;
-        margin-top: 100px;
-        min-height: 60vh;
+        padding: 1.5rem 0.75rem 1rem 0.75rem;
+        margin-top: 90px;
+        min-height: 55vh;
+    }
+    
+    .hero-main-logo {
+        max-width: 280px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-image {
+        margin-top: 1rem;
     }
     
     .hero-image img {
-        max-width: 60%;
-        max-height: 250px;
+        max-width: 55%;
+        max-height: 220px;
+    }
+    
+    .hero-image::after {
+        width: 110%;
+        height: 110%;
     }
     
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 6vw, 2.8rem);
+        margin-bottom: 0.75rem;
+        letter-spacing: 2px;
     }
     
     .hero-content h2 {
+        font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content p {
         font-size: 1rem;
+        padding: 0 0.5rem;
+        line-height: 1.6;
+    }
+    
+    .products-section {
+        padding: 1.5rem 0.75rem;
+        margin-top: 0.5rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0.5rem;
     }
     
     .product {
         padding: 1rem;
+        margin: 0 0.25rem;
     }
     
-    .modal-content {
-        padding: 1rem;
+    .product-image {
+        max-width: 320px;
+        margin-bottom: 1rem;
+    }
+    
+    .product-info {
+        padding: 0.75rem;
+        margin-top: 0.75rem;
+    }
+    
+    .product-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .product-info .price {
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .product-info .type {
+        font-size: 0.85rem;
     }
     
     .section-title {
-        font-size: 1.8rem;
+        font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+        margin-bottom: 2rem;
+        letter-spacing: 2px;
     }
     
     .gothic-title {
         margin-bottom: 1rem !important;
-        font-size: clamp(2.5rem, 6vw, 4rem) !important;
+        font-size: clamp(2.2rem, 5.5vw, 3.5rem) !important;
+        letter-spacing: 1px !important;
+    }
+    
+    .modal-content {
+        padding: 1rem;
+        margin: 15% auto;
+        width: 96%;
+        max-width: none;
+    }
+    
+    .modal-body {
+        gap: 1rem;
+    }
+    
+    .modal-details h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .modal-details p {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .modal-price {
+        font-size: 1.3rem !important;
+    }
+    
+    #sizes {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-primary {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        margin-top: 0.75rem;
+    }
+    
+    .close {
+        font-size: 1.8rem;
+        top: 15px;
+        right: 20px;
+    }
+    
+    footer {
+        padding: 2rem 1rem 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .footer-logo img {
+        height: 50px;
+    }
+    
+    .footer-info p {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
     }
     
     .logo-container .logo {
-        height: 60px;
+        height: 55px;
     }
 }
