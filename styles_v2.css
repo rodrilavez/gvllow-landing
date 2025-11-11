@@ -5,6 +5,21 @@
     box-sizing: border-box;
 }
 
+/* Mobile-first viewport fixes */
+@media screen and (max-width: 768px) {
+    html {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+    
+    html, body {
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+    }
+}
+
 /* Performance optimizations for mobile */
 @media (max-width: 768px) {
     * {
@@ -97,6 +112,9 @@ header {
     filter: drop-shadow(0 0 50px rgba(0, 0, 0, 1));
     /* Ensure header stays at top */
     transform: translateZ(0);
+    /* Force header to stay at viewport top */
+    margin: 0;
+    width: 100%;
 }
 
 .logo-container .logo {
@@ -1150,6 +1168,7 @@ footer {
         width: 100vw;
         height: 100vh;
         min-height: 100%;
+        z-index: -2 !important;
     }
     
     body::after {
@@ -1157,6 +1176,13 @@ footer {
         width: 100vw;
         height: 100vh;
         min-height: 100%;
+        z-index: -1 !important;
+    }
+    
+    /* Ensure body doesn't interfere with header */
+    body {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
     }
     
     /* Reduce animations for better mobile performance */
@@ -1195,8 +1221,13 @@ footer {
     header {
         padding: 1rem;
         height: 120px; /* Increased height for better mobile spacing */
-        top: 0;
-        position: fixed;
+        top: 0 !important;
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        z-index: 2000 !important;
     }
     
     .main-nav a {
@@ -1405,8 +1436,13 @@ footer {
     header {
         height: 110px; /* Increased for better mobile experience */
         padding: 0.75rem;
-        top: 0;
-        position: fixed;
+        top: 0 !important;
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        z-index: 2000 !important;
     }
     
     .main-nav a {
