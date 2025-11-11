@@ -1,0 +1,1168 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Metal Mania', 'Creepster', 'Inter', sans-serif;
+    background: #f52a17;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* V2 Variation: GVLLOW background with very light blur */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('IMG/gvllow_bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    filter: blur(1px) brightness(0.9) contrast(1.1); /* Very light blur */
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* V2 Variation: Additional grunge texture overlay with reduced opacity */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('IMG/cracked_grunge_texture_background_2207.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+    mix-blend-mode: multiply;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+    filter: contrast(150%) brightness(0.4) blur(1px);
+}
+
+/* Header - V2 Red Banner Design */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1500;
+    height: 120px;
+    /* V2: Use red banner background */
+    background-image: url('IMG/banner_new_red.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    box-shadow: none;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Remove hard edges completely */
+    filter: drop-shadow(0 0 50px rgba(0, 0, 0, 1));
+}
+
+.logo-container .logo {
+    height: 80px;
+    width: auto;
+    /* V2 Variation: Ultra thin red outline on header logo */
+    filter: drop-shadow(0.2px 0.2px 0px rgba(220, 20, 60, 0.6))
+            drop-shadow(-0.2px -0.2px 0px rgba(220, 20, 60, 0.6))
+            drop-shadow(0.2px -0.2px 0px rgba(220, 20, 60, 0.6))
+            drop-shadow(-0.2px 0.2px 0px rgba(220, 20, 60, 0.6))
+            drop-shadow(0px 0.2px 0px rgba(220, 20, 60, 0.6))
+            drop-shadow(0.2px 0px 0px rgba(220, 20, 60, 0.6))
+            drop-shadow(0px -0.2px 0px rgba(220, 20, 60, 0.6))
+            drop-shadow(-0.2px 0px 0px rgba(220, 20, 60, 0.6))
+            brightness(1.1)
+            contrast(1.2);
+    transition: all 0.3s ease;
+}
+
+.logo-container .logo:hover {
+    filter: drop-shadow(0.2px 0.2px 0px rgba(220, 20, 60, 0.8))
+            drop-shadow(-0.2px -0.2px 0px rgba(220, 20, 60, 0.8))
+            drop-shadow(0.2px -0.2px 0px rgba(220, 20, 60, 0.8))
+            drop-shadow(-0.2px 0.2px 0px rgba(220, 20, 60, 0.8))
+            drop-shadow(0px 0.2px 0px rgba(220, 20, 60, 0.8))
+            drop-shadow(0.2px 0px 0px rgba(220, 20, 60, 0.8))
+            drop-shadow(0px -0.2px 0px rgba(220, 20, 60, 0.8))
+            drop-shadow(-0.2px 0px 0px rgba(220, 20, 60, 0.8))
+            drop-shadow(0 0 6px rgba(220, 20, 60, 0.3))
+            brightness(1.2)
+            contrast(1.3)
+            scale(1.05);
+}
+
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    background: transparent;
+    padding: 0.5rem;
+    border: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    margin-top: -8px;
+}
+
+.main-nav a:hover {
+    transform: scale(1.1);
+}
+
+.cart-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    color: #ffffff;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+    stroke-width: 2;
+}
+
+#cart-count {
+    background: #dc143c;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 1.2rem;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    box-shadow: 0 2px 4px rgba(220, 20, 60, 0.4);
+    line-height: 1;
+}
+
+.main-nav a:hover #cart-count {
+    background: #ff1744;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(255, 23, 68, 0.6);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 5% 2rem 5%;
+    margin-top: 100px; /* Reduced gap with header for seamless torn effect */
+    position: relative;
+    overflow: hidden;
+    background: #000000;
+    background-image: url('IMG/blurry_pic.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 10;
+    border: none;
+    outline: none;
+    /* V2 Variation: Remove blur from hero to keep it crisp */
+    filter: none;
+}
+
+/* Hero fade down effect - blends background image with leopard pattern below */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to bottom, 
+        transparent 0%, 
+        rgba(0, 0, 0, 0.1) 10%,
+        rgba(0, 0, 0, 0.3) 30%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.7) 70%,
+        rgba(0, 0, 0, 0.85) 90%,
+        rgba(0, 0, 0, 0.95) 100%);
+    z-index: 16;
+    pointer-events: none;
+}
+
+/* Hero fade removed */
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(20, 20, 20, 0.5) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    flex: 1;
+    z-index: 2;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* V2 Variation: Remove blur from hero content */
+    filter: none;
+}
+
+.hero-logo {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-main-logo {
+    max-width: 400px;
+    height: auto;
+    filter: 
+        drop-shadow(0 0 25px rgba(255, 215, 0, 0.6))
+        drop-shadow(0 0 50px rgba(139, 69, 19, 0.4))
+        drop-shadow(0 0 75px rgba(0, 0, 0, 0.3))
+        brightness(1.2)
+        contrast(1.3);
+    transition: all 0.3s ease;
+    animation: leopardGlow 3s ease-in-out infinite alternate;
+}
+
+/* New leopard glow animation for hero logo */
+@keyframes leopardGlow {
+    0% {
+        filter: 
+            drop-shadow(0 0 20px rgba(255, 215, 0, 0.5))
+            drop-shadow(0 0 40px rgba(139, 69, 19, 0.3))
+            drop-shadow(0 0 60px rgba(0, 0, 0, 0.2))
+            brightness(1.1)
+            contrast(1.2);
+        transform: scale(1);
+    }
+    50% {
+        filter: 
+            drop-shadow(0 0 35px rgba(255, 215, 0, 0.8))
+            drop-shadow(0 0 70px rgba(139, 69, 19, 0.6))
+            drop-shadow(0 0 105px rgba(0, 0, 0, 0.4))
+            brightness(1.3)
+            contrast(1.4);
+        transform: scale(1.02);
+    }
+    100% {
+        filter: 
+            drop-shadow(0 0 40px rgba(255, 215, 0, 0.9))
+            drop-shadow(0 0 80px rgba(139, 69, 19, 0.7))
+            drop-shadow(0 0 120px rgba(0, 0, 0, 0.5))
+            brightness(1.4)
+            contrast(1.5);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fireGlow {
+    0% {
+        filter: 
+            drop-shadow(0 0 15px #ffff00)
+            drop-shadow(0 0 30px #ff8800)
+            drop-shadow(0 0 45px #dc143c)
+            contrast(1.2);
+        transform: scale(1);
+    }
+    25% {
+        filter: 
+            drop-shadow(0 0 20px #ff6600)
+            drop-shadow(0 0 40px #ffaa00)
+            drop-shadow(0 0 60px #ff0000)
+            contrast(1.3);
+        transform: scale(1.02);
+    }
+    50% {
+        filter: 
+            drop-shadow(0 0 25px #ffff00)
+            drop-shadow(0 0 50px #ff4400)
+            drop-shadow(0 0 75px #cc0000)
+            contrast(1.4);
+        transform: scale(1.04);
+    }
+    75% {
+        filter: 
+            drop-shadow(0 0 20px #ff8800)
+            drop-shadow(0 0 40px #ff2200)
+            drop-shadow(0 0 60px #990000)
+            contrast(1.3);
+        transform: scale(1.02);
+    }
+    100% {
+        filter: 
+            drop-shadow(0 0 30px #ffdd00)
+            drop-shadow(0 0 60px #ff6600)
+            drop-shadow(0 0 90px #bb0000)
+            contrast(1.5);
+        transform: scale(1.05);
+    }
+}
+
+.hero-main-logo:hover {
+    filter: 
+        drop-shadow(0 0 30px #dc143c)
+        drop-shadow(0 0 60px rgba(220, 20, 60, 0.8))
+        contrast(1.4)
+        saturate(1.2);
+    transform: scale(1.05);
+}
+
+.hero-content h1 {
+    font-family: 'Nosifer', 'Metal Mania', cursive;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    color: #000000;
+    text-shadow: 
+        0 0 10px #ffffff,
+        0 0 20px #ffffff,
+        0 0 30px #ffffff,
+        2px 2px 0px #ffffff;
+    text-transform: uppercase;
+}
+
+.hero-content h2 {
+    font-family: 'Metal Mania', cursive;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.hero-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #ffffff;
+    max-width: 500px;
+    line-height: 1.8;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    margin: 0 auto;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    position: relative;
+    height: 100%;
+    /* V2 Variation: Remove blur from hero image */
+    filter: none;
+}
+
+/* Skull frame overlay using pseudo-element */
+.hero-image::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background-image: url('IMG/album-frame.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 30;
+    pointer-events: none;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 1)) 
+            brightness(1.3) 
+            contrast(1.5);
+}
+
+.hero-image img {
+    max-width: 75%;
+    height: auto;
+    max-height: 320px;
+    border-radius: 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+    /* Ensure image is behind the skull frame and centered */
+}
+
+/* Products Section */
+.products-section {
+    padding: 2rem 2rem 2rem 2rem;
+    max-width: 1400px;
+    margin: 1rem auto 0 auto;
+    position: relative;
+    z-index: 17;
+    /* V2 Variation: Clean background without fade */
+    filter: none;
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.section-title {
+    font-family: 'Nosifer', 'Metal Mania', cursive;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 3rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    
+    /* Leopard pattern effect using multiple approaches for compatibility */
+    position: relative;
+    color: #000000;
+    
+    /* Create leopard background effect */
+    background: 
+        radial-gradient(circle at 20% 20%, #8B4513 15%, transparent 15%),
+        radial-gradient(circle at 60% 40%, #D2691E 12%, transparent 12%),
+        radial-gradient(circle at 80% 70%, #8B4513 18%, transparent 18%),
+        radial-gradient(circle at 30% 80%, #D2691E 14%, transparent 14%),
+        radial-gradient(circle at 90% 30%, #8B4513 16%, transparent 16%),
+        radial-gradient(circle at 40% 60%, #D2691E 13%, transparent 13%),
+        #F4E4BC;
+    background-size: 40px 40px, 50px 50px, 35px 35px, 45px 45px, 38px 38px, 42px 42px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Outline for definition */
+    -webkit-text-stroke: 1px #000000;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Gothic title styling with UnifrakturMaguntia - V2 Style */
+.gothic-title {
+    font-family: 'UnifrakturMaguntia', 'Creepster', 'Nosifer', cursive !important;
+    font-size: clamp(4rem, 9vw, 7rem) !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    margin-bottom: 1rem !important;
+    letter-spacing: 2px !important;
+    text-transform: none !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    
+    /* V2 Style: White text with black outline and stronger shadow */
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-text-stroke: 1px #000000 !important;
+    text-shadow: 
+        2px 2px 0px #000000,
+        -2px -2px 0px #000000,
+        2px -2px 0px #000000,
+        -2px 2px 0px #000000,
+        0px 2px 0px #000000,
+        2px 0px 0px #000000,
+        0px -2px 0px #000000,
+        -2px 0px 0px #000000,
+        0 0 15px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(0, 0, 0, 0.8),
+        3px 3px 8px rgba(0, 0, 0, 1) !important;
+    
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.9)) 
+            drop-shadow(3px 3px 10px rgba(0, 0, 0, 1)) !important;
+    
+    /* Remove any background patterns */
+    background: none !important;
+    background-image: none !important;
+    background-clip: initial !important;
+    -webkit-background-clip: initial !important;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 4rem;
+    margin-bottom: 4rem;
+    padding: 2rem;
+}
+
+/* Product Cards - V2 Style with Leopard Pattern Background */
+.product {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 2rem;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* V2: Leopard pattern background for each product - solid background */
+.product::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('IMG/leopard_pattern.png');
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: center;
+    opacity: 1;
+    z-index: -2;
+    border-radius: 0;
+    transition: all 0.4s ease;
+}
+
+/* V2: White glow layer above leopard pattern but behind product */
+.product::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    border-radius: 0;
+    transition: all 0.4s ease;
+    opacity: 0;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+}
+
+/* V2: Blur leopard background on hover */
+.product:hover::before {
+    filter: blur(2px);
+    opacity: 0.85;
+    transform: scale(1.1);
+}
+
+/* V2: Show white glow on hover */
+.product:hover::after {
+    opacity: 1;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+}
+
+/* Removed product card effects - clean floating products */
+
+/* V2: Enhanced product visibility on hover */
+.product:hover .product-image img {
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8))
+            contrast(1.2) 
+            saturate(1.2)
+            brightness(1.1);
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+/* Global style for all product images */
+.product img,
+.modal img,
+.main-product-image,
+.thumbnail {
+    background: transparent !important;
+}
+
+.product-image {
+    position: relative;
+    margin-bottom: 1.5rem;
+    overflow: visible;
+    border-radius: 0;
+    aspect-ratio: 1;
+    background: transparent;
+    width: 100%;
+    max-width: 400px;
+    /* Create a container that supports transparent backgrounds */
+    backdrop-filter: none;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    background: transparent;
+    opacity: 0;
+    z-index: 5;
+}
+
+/* V2: Show first image by default */
+.product-image img:first-child {
+    opacity: 1;
+}
+
+/* V2: Image carousel animation on hover - like a GIF */
+.product:hover .product-image img {
+    animation: imageCarousel 1.8s infinite ease-in-out;
+}
+
+@keyframes imageCarousel {
+    0%, 30% { opacity: 1; }
+    35%, 100% { opacity: 0; }
+}
+
+.product:hover .product-image img:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.product:hover .product-image img:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+/* For products with only 2 images, faster cycling */
+.product[data-id="2"]:hover .product-image img,
+.product[data-id="4"]:hover .product-image img {
+    animation: imageCarouselFast 1.2s infinite ease-in-out;
+}
+
+@keyframes imageCarouselFast {
+    0%, 45% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+.product[data-id="2"]:hover .product-image img:nth-child(2),
+.product[data-id="4"]:hover .product-image img:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+/* V2: Remove old hover image styles - now using carousel */
+
+.product-info {
+    position: relative;
+    z-index: 10;
+    transition: all 0.4s ease;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    border-radius: 0;
+    margin-top: 1rem;
+    backdrop-filter: blur(5px);
+}
+
+.product:hover .product-info {
+    background: rgba(0, 0, 0, 0.85);
+    transform: translateY(-5px) scale(1.02);
+    backdrop-filter: blur(8px);
+}
+
+.product-info h3 {
+    font-family: 'Cinzel', 'Metal Mania', cursive;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    text-shadow: 
+        2px 2px 0px #000000,
+        -2px -2px 0px #000000,
+        2px -2px 0px #000000,
+        -2px 2px 0px #000000,
+        0px 2px 0px #000000,
+        2px 0px 0px #000000,
+        0px -2px 0px #000000,
+        -2px 0px 0px #000000,
+        0 0 10px rgba(0, 0, 0, 0.9),
+        0 0 20px rgba(0, 0, 0, 0.8),
+        3px 3px 8px rgba(0, 0, 0, 1);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.product-info .price {
+    font-family: 'Cinzel', 'Metal Mania', cursive;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+    text-shadow: 
+        2px 2px 0px #000000,
+        -2px -2px 0px #000000,
+        2px -2px 0px #000000,
+        -2px 2px 0px #000000,
+        0px 2px 0px #000000,
+        2px 0px 0px #000000,
+        0px -2px 0px #000000,
+        -2px 0px 0px #000000,
+        0 0 10px rgba(0, 0, 0, 0.9),
+        0 0 15px rgba(220, 20, 60, 0.7),
+        3px 3px 8px rgba(0, 0, 0, 1);
+}
+
+.product-info .type {
+    font-family: 'Cinzel', 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-shadow: 
+        1px 1px 0px #000000,
+        -1px -1px 0px #000000,
+        1px -1px 0px #000000,
+        -1px 1px 0px #000000,
+        0px 1px 0px #000000,
+        1px 0px 0px #000000,
+        0px -1px 0px #000000,
+        -1px 0px 0px #000000,
+        0 0 8px rgba(0, 0, 0, 0.9),
+        2px 2px 6px rgba(0, 0, 0, 1);
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #000000 100%);
+    margin: 5% auto;
+    padding: 2rem;
+    border: 2px solid #dc143c;
+    border-radius: 0;
+    width: 90%;
+    max-width: 800px;
+    color: #ffffff;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(220, 20, 60, 0.3), 0 0 60px rgba(220, 20, 60, 0.1);
+    /* V2 Variation: Remove blur from modal content */
+    filter: none;
+}
+
+.close {
+    color: #dc143c;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.8);
+    transform: scale(1.1);
+}
+
+.modal-body {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.modal-images {
+    flex: 1;
+}
+
+.modal-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background: transparent;
+    /* Apply same white background removal to modal images */
+    filter: drop-shadow(0 10px 20px rgba(220, 20, 60, 0.3)) 
+            contrast(1.1) 
+            saturate(1.1);
+}
+
+.modal-details {
+    flex: 1;
+    padding-left: 1rem;
+}
+
+.modal-details h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.modal-details p {
+    margin-bottom: 1rem;
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+.modal-price {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #dc143c !important;
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.5) !important;
+}
+
+/* Form Styles */
+#size-selector {
+    margin: 1.5rem 0;
+}
+
+#size-selector label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+#sizes {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #dc143c;
+    border-radius: 0;
+    background: rgba(220, 20, 60, 0.1);
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#sizes:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #dc143c 0%, #b71c1c 100%);
+    color: #ffffff;
+    border: 2px solid #dc143c;
+    padding: 1rem 2rem;
+    border-radius: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    color: #dc143c;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(220, 20, 60, 0.4);
+}
+
+/* Cart Styles */
+.cart-total {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    text-align: right;
+    margin: 1.5rem 0 !important;
+    color: #dc143c !important;
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.5) !important;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item p {
+    margin: 0;
+    color: #cccccc;
+}
+
+.cart-item strong {
+    color: #ffffff;
+}
+
+/* Checkout Form */
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section h3 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-size: 1.3rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+#checkout-form input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 2px solid rgba(220, 20, 60, 0.3);
+    border-radius: 0;
+    background: rgba(220, 20, 60, 0.05);
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#checkout-form input:focus {
+    border-color: #dc143c;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
+    outline: none;
+}
+
+#checkout-form input::placeholder {
+    color: #999999;
+}
+
+/* Order Confirmation */
+.order-confirmation {
+    text-align: center;
+    max-width: 500px;
+}
+
+.confirmation-content {
+    padding: 2rem 0;
+    /* V2 Variation: Remove blur from confirmation content */
+    filter: none;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.order-confirmation h2 {
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.order-confirmation p {
+    margin-bottom: 1rem;
+    color: #cccccc;
+}
+
+/* Footer */
+footer {
+    background: #000000;
+    padding: 3rem 2rem 2rem;
+    margin-top: 4rem;
+    border-top: 3px solid #dc143c;
+    position: relative;
+    z-index: 100;
+    /* V2 Variation: Remove blur from footer */
+    filter: none;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo img {
+    height: 60px;
+    width: auto;
+    filter: 
+        drop-shadow(0 0 15px rgba(255, 215, 0, 0.6))
+        drop-shadow(0 0 30px rgba(139, 69, 19, 0.4))
+        brightness(1.1)
+        contrast(1.2);
+    transition: all 0.3s ease;
+    animation: leopardGlow 3s ease-in-out infinite alternate;
+}
+
+.footer-logo img:hover {
+    filter: 
+        drop-shadow(0 0 20px rgba(255, 215, 0, 0.8))
+        drop-shadow(0 0 40px rgba(139, 69, 19, 0.6))
+        brightness(1.2)
+        contrast(1.3)
+        scale(1.1);
+}
+
+.footer-info {
+    text-align: right;
+}
+
+.footer-info p {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+    
+    .main-nav a {
+        margin-top: -12px;
+    }
+    
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 1rem 2rem 1rem;
+        margin-top: 100px;
+        min-height: 70vh;
+    }
+    
+    .hero-image img {
+        max-width: 70%;
+        max-height: 300px;
+    }
+    
+    .hero-content {
+        margin-bottom: 2rem;
+    }
+    
+    .products-section {
+        padding: 2rem 1rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1rem;
+    }
+    
+    .gothic-title {
+        margin-bottom: 1.5rem !important;
+        font-size: clamp(3rem, 8vw, 5rem) !important;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        padding: 1.5rem;
+        width: 95%;
+    }
+    
+    .modal-body {
+        flex-direction: column;
+    }
+    
+    .modal-details {
+        padding-left: 0;
+        padding-top: 1rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .footer-info {
+        text-align: center;
+    }
+    
+    .footer-logo img {
+        height: 60px;
+    }
+    
+    .logo-container .logo {
+        height: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-nav a {
+        margin-top: -15px;
+    }
+    
+    .hero {
+        padding: 2rem 1rem 2rem 1rem;
+        margin-top: 100px;
+        min-height: 60vh;
+    }
+    
+    .hero-image img {
+        max-width: 60%;
+        max-height: 250px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1rem;
+    }
+    
+    .product {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        padding: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .gothic-title {
+        margin-bottom: 1rem !important;
+        font-size: clamp(2.5rem, 6vw, 4rem) !important;
+    }
+    
+    .logo-container .logo {
+        height: 60px;
+    }
+}
