@@ -5,6 +5,27 @@
     box-sizing: border-box;
 }
 
+/* Performance optimizations for mobile */
+@media (max-width: 768px) {
+    * {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        perspective: 1000;
+    }
+    
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
+
 body {
     font-family: 'Metal Mania', 'Creepster', 'Inter', sans-serif;
     background: #f52a17;
@@ -249,34 +270,31 @@ header {
     animation: leopardGlow 3s ease-in-out infinite alternate;
 }
 
-/* New leopard glow animation for hero logo */
+/* New leopard glow animation for hero logo - Optimized for mobile */
 @keyframes leopardGlow {
     0% {
         filter: 
             drop-shadow(0 0 20px rgba(255, 215, 0, 0.5))
             drop-shadow(0 0 40px rgba(139, 69, 19, 0.3))
-            drop-shadow(0 0 60px rgba(0, 0, 0, 0.2))
             brightness(1.1)
             contrast(1.2);
         transform: scale(1);
     }
     50% {
         filter: 
-            drop-shadow(0 0 35px rgba(255, 215, 0, 0.8))
-            drop-shadow(0 0 70px rgba(139, 69, 19, 0.6))
-            drop-shadow(0 0 105px rgba(0, 0, 0, 0.4))
-            brightness(1.3)
-            contrast(1.4);
-        transform: scale(1.02);
+            drop-shadow(0 0 30px rgba(255, 215, 0, 0.7))
+            drop-shadow(0 0 60px rgba(139, 69, 19, 0.5))
+            brightness(1.2)
+            contrast(1.3);
+        transform: scale(1.01);
     }
     100% {
         filter: 
-            drop-shadow(0 0 40px rgba(255, 215, 0, 0.9))
-            drop-shadow(0 0 80px rgba(139, 69, 19, 0.7))
-            drop-shadow(0 0 120px rgba(0, 0, 0, 0.5))
-            brightness(1.4)
-            contrast(1.5);
-        transform: scale(1.05);
+            drop-shadow(0 0 35px rgba(255, 215, 0, 0.8))
+            drop-shadow(0 0 70px rgba(139, 69, 19, 0.6))
+            brightness(1.3)
+            contrast(1.4);
+        transform: scale(1.02);
     }
 }
 
@@ -519,7 +537,7 @@ header {
     border: none;
     border-radius: 0;
     padding: 2rem;
-    transition: all 0.4s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -527,6 +545,7 @@ header {
     align-items: center;
     text-align: center;
     overflow: hidden;
+    will-change: transform;
 }
 
 /* V2: Leopard pattern background for each product - solid background */
@@ -617,7 +636,7 @@ header {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
     position: absolute;
     top: 0;
     left: 0;
@@ -625,6 +644,7 @@ header {
     background: transparent;
     opacity: 0;
     z-index: 5;
+    will-change: opacity, filter, transform;
 }
 
 /* V2: Show first image by default */
@@ -632,38 +652,40 @@ header {
     opacity: 1;
 }
 
-/* V2: Image carousel animation on hover - like a GIF */
+/* V2: Image carousel animation on hover - Optimized for mobile */
 .product:hover .product-image img {
-    animation: imageCarousel 1.8s infinite ease-in-out;
+    animation: imageCarousel 2.4s infinite ease-in-out;
+    will-change: opacity;
 }
 
 @keyframes imageCarousel {
-    0%, 30% { opacity: 1; }
-    35%, 100% { opacity: 0; }
+    0%, 40% { opacity: 1; }
+    45%, 100% { opacity: 0; }
 }
 
 .product:hover .product-image img:nth-child(2) {
-    animation-delay: 0.6s;
+    animation-delay: 0.8s;
 }
 
 .product:hover .product-image img:nth-child(3) {
-    animation-delay: 1.2s;
+    animation-delay: 1.6s;
 }
 
-/* For products with only 2 images, faster cycling */
+/* For products with only 2 images, slower cycling for better performance */
 .product[data-id="2"]:hover .product-image img,
 .product[data-id="4"]:hover .product-image img {
-    animation: imageCarouselFast 1.2s infinite ease-in-out;
+    animation: imageCarouselFast 1.8s infinite ease-in-out;
+    will-change: opacity;
 }
 
 @keyframes imageCarouselFast {
-    0%, 45% { opacity: 1; }
-    50%, 100% { opacity: 0; }
+    0%, 50% { opacity: 1; }
+    55%, 100% { opacity: 0; }
 }
 
 .product[data-id="2"]:hover .product-image img:nth-child(2),
 .product[data-id="4"]:hover .product-image img:nth-child(2) {
-    animation-delay: 0.6s;
+    animation-delay: 0.9s;
 }
 
 /* V2: Remove old hover image styles - now using carousel */
@@ -1135,6 +1157,39 @@ footer {
         min-height: 100%;
     }
     
+    /* Reduce animations for better mobile performance */
+    .hero-main-logo {
+        animation: none; /* Disable complex glow animation */
+        filter: 
+            drop-shadow(0 0 15px rgba(255, 215, 0, 0.6))
+            drop-shadow(0 0 30px rgba(139, 69, 19, 0.4))
+            brightness(1.2)
+            contrast(1.3);
+    }
+    
+    /* Simplify product hover effects */
+    .product:hover {
+        transform: scale(1.02); /* Reduced scale for smoother performance */
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+    }
+    
+    /* Disable image carousel on mobile for better performance */
+    .product:hover .product-image img {
+        animation: none;
+    }
+    
+    /* Keep only first image visible on mobile */
+    .product-image img:not(:first-child) {
+        display: none;
+    }
+    
+    /* Simplify product info hover */
+    .product:hover .product-info {
+        background: rgba(0, 0, 0, 0.85);
+        transform: translateY(-3px) scale(1.01);
+        backdrop-filter: blur(3px);
+    }
+    
     header {
         padding: 1rem;
         height: 110px;
@@ -1309,6 +1364,38 @@ footer {
         height: 100vh;
         min-height: 100%;
         transform: translateZ(0); /* Hardware acceleration */
+    }
+    
+    /* Further reduce animations for small screens */
+    .hero-main-logo {
+        animation: none !important;
+        filter: 
+            drop-shadow(0 0 10px rgba(255, 215, 0, 0.5))
+            drop-shadow(0 0 20px rgba(139, 69, 19, 0.3))
+            brightness(1.1)
+            contrast(1.2);
+    }
+    
+    /* Minimal hover effects for small screens */
+    .product:hover {
+        transform: scale(1.01);
+        filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+    }
+    
+    /* Disable all complex filters on product images for performance */
+    .product:hover .product-image img {
+        filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.6));
+        transform: none;
+    }
+    
+    /* Simplify logo animations */
+    .footer-logo img {
+        animation: none;
+        filter: 
+            drop-shadow(0 0 10px rgba(255, 215, 0, 0.5))
+            drop-shadow(0 0 20px rgba(139, 69, 19, 0.3))
+            brightness(1.1)
+            contrast(1.2);
     }
     
     header {
