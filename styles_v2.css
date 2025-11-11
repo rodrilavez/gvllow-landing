@@ -95,6 +95,8 @@ header {
     align-items: center;
     /* Remove hard edges completely */
     filter: drop-shadow(0 0 50px rgba(0, 0, 0, 1));
+    /* Ensure header stays at top */
+    transform: translateZ(0);
 }
 
 .logo-container .logo {
@@ -1192,11 +1194,13 @@ footer {
     
     header {
         padding: 1rem;
-        height: 110px;
+        height: 120px; /* Increased height for better mobile spacing */
+        top: 0;
+        position: fixed;
     }
     
     .main-nav a {
-        margin-top: -10px;
+        margin-top: -5px; /* Reduced negative margin */
         padding: 0.4rem;
     }
     
@@ -1208,7 +1212,7 @@ footer {
         flex-direction: column;
         text-align: center;
         padding: 2.5rem 1rem 1.5rem 1rem;
-        margin-top: 95px;
+        margin-top: 105px; /* Increased to account for larger header */
         min-height: 65vh;
     }
     
@@ -1342,7 +1346,7 @@ footer {
     }
     
     .logo-container .logo {
-        height: 65px;
+        height: 70px; /* Slightly larger for better visibility */
     }
 }
 
@@ -1399,12 +1403,14 @@ footer {
     }
     
     header {
-        height: 100px;
+        height: 110px; /* Increased for better mobile experience */
         padding: 0.75rem;
+        top: 0;
+        position: fixed;
     }
     
     .main-nav a {
-        margin-top: -12px;
+        margin-top: -8px; /* Less negative margin for better alignment */
         padding: 0.25rem;
     }
     
@@ -1422,7 +1428,7 @@ footer {
     
     .hero {
         padding: 1.5rem 0.75rem 1rem 0.75rem;
-        margin-top: 90px;
+        margin-top: 100px; /* Increased for better spacing */
         min-height: 55vh;
     }
     
