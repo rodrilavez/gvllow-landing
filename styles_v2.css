@@ -12,6 +12,8 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    min-height: 100vh;
+    width: 100%;
 }
 
 /* V2 Variation: GVLLOW background with very light blur */
@@ -25,7 +27,7 @@ body::before {
     background-image: url('IMG/gvllow_bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: scroll; /* Changed from fixed for mobile compatibility */
     background-position: center;
     filter: blur(1px) brightness(0.9) contrast(1.1); /* Very light blur */
     z-index: -2;
@@ -1041,6 +1043,48 @@ footer {
     font-size: 1rem;
 }
 
+/* Mobile background fix for iOS and Android */
+@media (max-width: 768px) and (orientation: portrait) {
+    body::before {
+        position: absolute !important;
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100vh !important;
+        will-change: transform;
+    }
+    
+    body::after {
+        position: absolute !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100vh !important;
+        will-change: transform;
+    }
+}
+
+/* Landscape mobile fix */
+@media (max-width: 1024px) and (orientation: landscape) and (max-height: 768px) {
+    body::before {
+        position: absolute !important;
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100vh !important;
+    }
+    
+    body::after {
+        position: absolute !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100vh !important;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .hero {
@@ -1074,6 +1118,23 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* Fix background for mobile - prevent movement and adjust size */
+    body::before {
+        position: absolute;
+        background-attachment: scroll;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        min-height: 100%;
+    }
+    
+    body::after {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        min-height: 100%;
+    }
+    
     header {
         padding: 1rem;
         height: 110px;
@@ -1231,6 +1292,25 @@ footer {
 }
 
 @media (max-width: 480px) {
+    /* Enhanced background fix for small mobile screens */
+    body::before {
+        position: absolute;
+        background-attachment: scroll;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        min-height: 100%;
+        transform: translateZ(0); /* Hardware acceleration */
+    }
+    
+    body::after {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        min-height: 100%;
+        transform: translateZ(0); /* Hardware acceleration */
+    }
+    
     header {
         height: 100px;
         padding: 0.75rem;
